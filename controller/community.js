@@ -106,8 +106,25 @@ exports.followCommunity = async (req, res) => {
     }
 
     const user = await User.findById(req.user);
+    const isAlreadyFollowing = user.followings.find((following) => {
+      return following == id;
+    });
+    console.log(isAlreadyFollowing);
 
-    user.follow.push(community._id);
+    if (isAlreadyFollowing) {
+      return res.status(400).json({
+        error: ["Already following"],
+      });
+    }
+
+    user.followings.push(community._id);
+    community.followers.push(user._id);
+
+    await user.save();
+
+    res.status(200).json({
+      msg: ["Following now"],
+    });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({
