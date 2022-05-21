@@ -4,6 +4,7 @@ const {
   getAllCommunities,
   getUserCommunities,
   followCommunity,
+  inviteVeteran,
 } = require("../controller/community");
 const isAuth = require("../middleware/auth");
 const { body, param } = require("express-validator");
@@ -21,7 +22,7 @@ router.post(
 router.get("/", isAuth, getAllCommunities);
 router.get("/user", isAuth, getUserCommunities);
 router.patch(
-  "/:id",
+  "/follow/:id",
   [param("id", "You must enter id").not().isEmpty()],
   isAuth,
   followCommunity

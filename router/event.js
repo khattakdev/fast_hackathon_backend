@@ -3,6 +3,7 @@ const {
   listEvents,
   createEvent,
   showInterest,
+  inviteVeteran,
 } = require("../controller/event");
 const isAuth = require("../middleware/auth");
 const { body, param } = require("express-validator");
@@ -26,5 +27,12 @@ router.patch(
   isAuth,
   [param("id", "You must enter ID").not().isEmpty()],
   showInterest
+);
+
+router.patch(
+  "/invite/:id",
+  [param("id", "You must enter id").not().isEmpty()],
+  isAuth,
+  inviteVeteran
 );
 module.exports = router;

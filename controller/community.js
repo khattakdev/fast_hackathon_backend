@@ -1,4 +1,5 @@
 const Community = require("../model/community");
+const Event = require("../model/event");
 const User = require("../model/user");
 const { validationResult } = require("express-validator");
 
