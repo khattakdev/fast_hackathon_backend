@@ -11,11 +11,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    type: {
-      type: String,
-      required: true,
-    },
-    follow: [
+    hobbies: [
+      {
+        type: String,
+      },
+    ],
+    followings: [
       {
         type: String,
       },

@@ -21,7 +21,7 @@ const communitySchema = new Schema(
         ref: "Event",
       },
     ],
-    Followers: [
+    followers: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
