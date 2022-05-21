@@ -20,7 +20,6 @@ router.post(
     body("confirmPassword", "You must Enter Confirmation Password")
       .not()
       .isEmpty(),
-    body("type", "You must Enter Type").not().isEmpty(),
   ],
   register
 );
