@@ -1,13 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const communitySchema = new Schema(
   {
-    email: {
-      type: String,
-      required: true,
-    },
-    password: {
+    name: {
       type: String,
       required: true,
     },
@@ -15,31 +11,24 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    follow: [
+    created_by: {
+      type: Schema.Types.ObjectId,
+      red: "User",
+    },
+    events: [
       {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "Event",
       },
     ],
-    followers: [
+    Followers: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
-      },
-    ],
-    interested: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Event",
-      },
-    ],
-    pendingInvites: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Event",
       },
     ],
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Community", communitySchema);

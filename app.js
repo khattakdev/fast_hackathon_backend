@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const authRoute = require("./router/auth");
 const eventRoute = require("./router/event");
 const userRoute = require("./router/user");
+const communityRoute = require("./router/community");
 const miscRoutes = require("./router/misc");
 const app = express();
 const port = 8081;
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoute);
 app.use("/events", eventRoute);
 app.use("/user", userRoute);
+app.use("/community", communityRoute);
 app.use("/", miscRoutes);
 
 const connectDB = async (listen) => {

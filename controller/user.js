@@ -3,31 +3,11 @@ const Event = require("../model/event");
 
 exports.getAllVeterans = async (req, res) => {
   try {
-    const veterans = await User.find({
-      type: "veteran",
-    });
+    const veterans = await User.find();
 
     res.status(200).json({
       msg: ["List of Veterans"],
       veterans,
-    });
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).json({
-      error: "Server Error",
-    });
-  }
-};
-
-exports.getAllOrganizations = async (req, res) => {
-  try {
-    const organizations = await User.find({
-      type: { $ne: "veteran" },
-    });
-
-    res.status(200).json({
-      msg: ["List of Organizations"],
-      organizations,
     });
   } catch (error) {
     console.log(error.message);
